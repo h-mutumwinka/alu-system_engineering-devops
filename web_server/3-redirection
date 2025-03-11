@@ -1,0 +1,16 @@
+#!/usr/bin/env bash
+# Configure your Nginx server so that /redirect_me is redirecting to another page.
+sudo apt-get update
+sudo apt-get -y install nginx
+sudo ufw allow 'Nginx HTTP'
+echo 'Holberton School' > /var/www/html/index.html
+printf %s "server {
+    listen 80;
+    listen [::]:80 default_server;
+    root   /etc/nginx/html;
+    index  index.html index.htm;
+    location /redirect_me {
+        return 301 https://www.holbertonschool.com/co;
+    }
+}" > /etc/nginx/sites-available/default
+service nginx restart
