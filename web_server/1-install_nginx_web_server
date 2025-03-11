@@ -1,13 +1,8 @@
 #!/usr/bin/env bash
-# Update package list and install Nginx
-sudo apt-get update -y
-sudo apt-get install -y nginx
+# installs nginx and configure it to listen on port 80
+# print "Hello World"
 
-# Ensure Nginx is running
+sudo apt-get -y update
+sudo apt-get -y install nginx
+echo 'Holberton School is winning' > /var/www/html/index.nginx-debian.html
 sudo service nginx start
-
-# Create a custom index.html with required content
-echo 'Holberton School for the win!' | sudo tee /var/www/html/index.html > /dev/null
-
-# Restart Nginx without using systemctl
-sudo service nginx restart
